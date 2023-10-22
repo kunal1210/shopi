@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useURLID } from "./useURLID";
+import { useNavigate } from "react-router-dom";
 
 function ProductItem() {
   const { id } = useURLID();
@@ -22,10 +23,12 @@ function ProductItem() {
     }
     fetchData();
   }, [id]);
+  const navigate = useNavigate();
   if (loading) return <div className="">loding....</div>;
   return (
     <div className="single__product">
       <h1>
+        <span onClick={() => navigate("/")}>🔙</span>
         <span>
           {singleProduct.itemName} Page id: {id}
         </span>
